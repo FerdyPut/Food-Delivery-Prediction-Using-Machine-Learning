@@ -4,7 +4,9 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 def eda():
-    st.info("Ini adalah Bagian EDA!")
+    # Menampilkan informasi di bagian atas
+    st.info("Ini adalah Bagian EDA! Menampilkan analisis statistik dan visualisasi data.")
+    
     # URL Dropbox yang telah diubah menjadi link langsung
     url = 'https://www.dropbox.com/scl/fi/n5zlvmvafydjweliu55f8/Data-FTD-Clean.csv?rlkey=fax9s8fnda5gxdnfh9y4guzu2&st=eq0a6s5v&dl=1'
 
@@ -13,29 +15,32 @@ def eda():
         df = pd.read_csv(url)
 
         # Pastikan data berhasil dimuat
-        st.write("Dataset successfully loaded!")
+        st.info("Dataset berhasil dibaca!")
         st.write(df.head())  # Menampilkan 5 baris pertama untuk verifikasi
     except Exception as e:
         st.error(f"Error loading dataset: {e}")
         return
-
+        
+    st.markdown("Ini adalah..")
     # Statistik Deskriptif
     st.write("Descriptive Statistics:")
     st.write(df.describe())
 
-    # Menampilkan Korelasi antar variabel menggunakan Heatmap
-    st.write("Correlation Heatmap:")
-    corr = df.corr()
+    # Menampilkan Korelasi antar variabel menggunakan Heatmap hanya untuk variabel numerik
+    st.write("Correlation Heatmap (Numerical Variables Only):")
+    numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
+    corr = df[numeric_columns].corr()  # Menghitung korelasi hanya untuk kolom numerik
     fig, ax = plt.subplots(figsize=(10, 6))
     sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
     st.pyplot(fig)
 
     # Distribusi Data untuk setiap variabel numerik
     st.write("Distribution of Numerical Variables:")
-    fig, ax = plt.subplots(figsize=(10, 6))
-    for column in df.select_dtypes(include=['float64', 'int64']).columns:
+    for column in numeric_columns:
+        fig, ax = plt.subplots(figsize=(10, 6))
         sns.histplot(df[column], kde=True, ax=ax, label=column)
-    st.pyplot(fig)
+        ax.set_title(f'Distribution of {column}')
+        st.pyplot(fig)
 
     # Boxplot untuk melihat distribusi Delivery Time berdasarkan Traffic Level
     st.write("Boxplot: Traffic Level vs Delivery Time")
