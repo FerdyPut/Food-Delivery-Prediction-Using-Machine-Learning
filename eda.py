@@ -21,47 +21,39 @@ def eda():
         st.error(f"Error loading dataset: {e}")
         return
         
-    st.markdown("Ini adalah..")
     # Statistik Deskriptif
     st.write("Descriptive Statistics:")
     st.write(df.describe())
 
+    # Pilih kolom numerik untuk analisis
+    numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
+
     # Menampilkan Korelasi antar variabel menggunakan Heatmap hanya untuk variabel numerik
     st.write("Correlation Heatmap (Numerical Variables Only):")
-    numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
     corr = df[numeric_columns].corr()  # Menghitung korelasi hanya untuk kolom numerik
     fig, ax = plt.subplots(figsize=(10, 6))
     sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
     st.pyplot(fig)
 
-    # Distribusi Data untuk setiap variabel numerik
-    st.write("Distribution of Numerical Variables:")
-    for column in numeric_columns:
-        fig, ax = plt.subplots(figsize=(10, 6))
-        sns.histplot(df[column], kde=True, ax=ax, label=column)
-        ax.set_title(f'Distribution of {column}')
+    # EDA Visualizations (Boxplot, Histogram, Scatter Plot)
+    with st.expander("Boxplot: Pilih variabel untuk melihat Boxplot"):
+        selected_boxplot = st.selectbox("Pilih variabel untuk Boxplot", numeric_columns)
+        fig, ax = plt.subplots(figsize=(8, 5))  # Menyesuaikan ukuran agar pas dengan web
+        sns.boxplot(data=df, x=selected_boxplot, ax=ax)
+        ax.set_title(f'Boxplot: {selected_boxplot}')
         st.pyplot(fig)
 
-    # Boxplot untuk melihat distribusi Delivery Time berdasarkan Traffic Level
-    st.write("Boxplot: Traffic Level vs Delivery Time")
-    fig, ax = plt.subplots(figsize=(10, 6))
-    sns.boxplot(data=df, x='Traffic_Level', y='Delivery_Time_min', ax=ax)
-    st.pyplot(fig)
+    with st.expander("Histogram: Pilih variabel untuk melihat Histogram"):
+        selected_hist = st.selectbox("Pilih variabel untuk Histogram", numeric_columns)
+        fig, ax = plt.subplots(figsize=(8, 5))  # Menyesuaikan ukuran agar pas dengan web
+        sns.histplot(df[selected_hist], kde=True, ax=ax)
+        ax.set_title(f'Histogram: {selected_hist}')
+        st.pyplot(fig)
 
-    # Scatter plot antara Distance dan Delivery Time
-    st.write("Scatter Plot: Distance vs Delivery Time")
-    fig, ax = plt.subplots(figsize=(10, 6))
-    sns.scatterplot(data=df, x='Distance_km', y='Delivery_Time_min', ax=ax)
-    st.pyplot(fig)
-
-    # Visualisasi hubungan antara Preparation Time dan Delivery Time
-    st.write("Scatter Plot: Preparation Time vs Delivery Time")
-    fig, ax = plt.subplots(figsize=(10, 6))
-    sns.scatterplot(data=df, x='Preparation_Time_min', y='Delivery_Time_min', ax=ax)
-    st.pyplot(fig)
-
-    # Visualisasi boxplot antara Time of Day dan Delivery Time
-    st.write("Boxplot: Time of Day vs Delivery Time")
-    fig, ax = plt.subplots(figsize=(10, 6))
-    sns.boxplot(data=df, x='Time_of_Day', y='Delivery_Time_min', ax=ax)
-    st.pyplot(fig)
+    with st.expander("Scatter Plot: Pilih variabel untuk melihat Scatter Plot"):
+        selected_x = st.selectbox("Pilih variabel untuk sumbu X", numeric_columns)
+        selected_y = st.selectbox("Pilih variabel untuk sumbu Y", numeric_columns)
+        fig, ax = plt.subplots(figsize=(8, 5))  # Menyesuaikan ukuran agar pas dengan web
+        sns.scatterplot(data=df, x=selected_x, y=selected_y, ax=ax)
+        ax.set_title(f'Scatter Plot: {selected_x} vs {selected_y}')
+        st.pyplot(fig)
