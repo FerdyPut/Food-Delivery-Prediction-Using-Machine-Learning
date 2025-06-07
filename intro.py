@@ -23,6 +23,7 @@ def tampilkan_halaman_umum():
         .hover-box {{
             background-color: #FFEB3B; /* Kuning */
             padding: 10px;
+            margin-bottom: 10px;
             border-radius: 5px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }}
@@ -30,14 +31,31 @@ def tampilkan_halaman_umum():
             transform: scale(1.05); /* Zoom saat hover */
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Efek bayangan */
         }}
+        .content {{
+            margin-left: 20px;
+        }}
     </style>
-
+    
     <div class="hover-box">
-        <ul>
-            <li><b>{greeting}</b>, Diharapkan digunakan dengan baik! <b>Food Time Delivery Prediction</b>.</li>
+        <b>{greeting}</b>, Diharapkan digunakan dengan baik! <b>Food Time Delivery Prediction</b>.
+    </div>
+    <div class="hover-box">
+        <ul class="content">
             <li><b>Menu Tab</b> terdapat Exploratory Data Analysis (EDA) dan Prediction Test.</li>
+        </ul>
+    </div>
+    <div class="hover-box">
+        <ul class="content">
             <li>Pada Menu <b>EDA</b> sebagai visualisasi atau analisis statistik terkait kasus Food Time Delivery.</li>
+        </ul>
+    </div>
+    <div class="hover-box">
+        <ul class="content">
             <li>Pada Menu <b>Prediction Test</b> terdapat Prediction Test yang digunakan untuk menguji hasil prediksi waktu pengantaran (Food Time Delivery) dari variabel-variabel yang tersedia.</li>
+        </ul>
+    </div>
+    <div class="hover-box">
+        <ul class="content">
             <li><b>Tools ini dibuat oleh:</b> Ferdyansyah Permana Putra - DS30.</li>
         </ul>
     </div>
