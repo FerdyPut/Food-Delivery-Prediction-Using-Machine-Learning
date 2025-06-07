@@ -99,7 +99,7 @@ def prediksi():
             input_data_numeric = input_data[['Distance_km', 'Preparation_Time_min', 'Courier_Experience_yrs']] 
 
             # Melakukan scaling menggunakan StandardScaler yang telah dilatih
-            input_data_scaled = scaler.transform(input_data_numeric)
+            input_data_scaled = scaler.transform(input_data[input_data])
 
             # Menyusun kembali DataFrame setelah scaling, dan memastikan kolomnya sesuai
             input_data_scaled_df = pd.DataFrame(input_data_scaled, columns=input_data_numeric.columns, index=input_data.index)
