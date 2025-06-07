@@ -15,6 +15,7 @@ def load_pickle_from_dropbox(url):
 
 def prediksi():
     st.title('Food Time Delivery Prediction')
+    st.info("Prediction Tools ini digunakan untuk menguji dari variabel-variabel yang ada berkaitan dengan faktor pengantaran makanan nantinya didapatkan berapa perkiraan estimasi waktu pengantarannya. Hal ini, berguna untuk meminimalisisr resiko pengantaran.")
 
     # Input variabel dari pengguna
     st.write("Masukkan data untuk memprediksi waktu pengantaran:")
