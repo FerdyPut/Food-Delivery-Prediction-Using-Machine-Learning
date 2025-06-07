@@ -6,13 +6,17 @@ import matplotlib.pyplot as plt
 def EDA():
     # URL Dropbox yang telah diubah menjadi link langsung
     url = 'https://www.dropbox.com/scl/fi/rdvxgkihztj5b0buuxldl/Food_Delivery_Times.csv?rlkey=eg444qddox8isjz24m5ve81hf&st=elilrwwv&dl=1'
-    
-    # Membaca file CSV dari Dropbox
-    df = pd.read_csv(url)
 
-    # Menampilkan preview data
-    st.write("Dataset Preview:")
-    st.write(df.head())
+    try:
+        # Membaca file CSV dari Dropbox
+        df = pd.read_csv(url)
+
+        # Pastikan data berhasil dimuat
+        st.write("Dataset successfully loaded!")
+        st.write(df.head())  # Menampilkan 5 baris pertama untuk verifikasi
+    except Exception as e:
+        st.error(f"Error loading dataset: {e}")
+        return
 
     # Statistik Deskriptif
     st.write("Descriptive Statistics:")
