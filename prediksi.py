@@ -95,19 +95,18 @@ def prediksi():
             st.write("Data setelah One-Hot Encoding:")
             st.write(input_data)
 
-            # Menyusun kembali kolom numerik sesuai dengan urutan yang digunakan saat pelatihan
-            input_data_numeric = input_data[['Distance_km', 'Preparation_Time_min', 'Courier_Experience_yrs']] 
+            # Pisahkan kolom numerik yang akan diskalakan
+            numerik_scale = ['Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km']
+            input_data_numeric = input_data[numerik_scale]
 
-            # Melakukan scaling menggunakan StandardScaler yang telah dilatih
-            input_data_scaled = scaler.transform(input_data[input_data_numeric])
+            # Lakukan scaling hanya pada kolom numerik
+            numerik_scaled_2 = scaler.transform(input_data_numeric)
 
-            # Menyusun kembali DataFrame setelah scaling, dan memastikan kolomnya sesuai
-            input_data_scaled_df = pd.DataFrame(input_data_scaled, columns=input_data_numeric.columns, index=input_data.index)
+            # Gabungkan hasil scaling dengan kolom kategorik yang sudah ada
+            X_test_scaled = pd.concat([input_data.drop(columns=numerik_scale), 
+                                    pd.DataFrame(numerik_scaled_2, columns=numerik_scale, index=input_data.index)], axis=1)
 
-            # Menambahkan hasil scaling ke input_data yang sudah diencoding (menggabungkan data)
-            input_data = pd.concat([input_data_scaled_df, input_data.drop(columns=['Distance_km', 'Preparation_Time_min', 'Courier_Experience_yrs'])], axis=1)
-
-            # Menyusun ulang kolom agar sesuai dengan urutan yang diinginkan
+            # Menyusun kembali kolom agar sesuai dengan urutan yang diinginkan
             correct_column_order = [
                 'Weather_Clear', 'Weather_Foggy', 'Weather_Rainy', 'Weather_Snowy', 'Weather_Windy',
                 'Traffic_Level_Low', 'Traffic_Level_Medium', 'Traffic_Level_High', 
@@ -115,8 +114,15 @@ def prediksi():
                 'Time_of_Day_Afternoon', 'Time_of_Day_Evening', 'Time_of_Day_Morning', 'Time_of_Day_Night',
                 'Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km'
             ]
-            input_data = input_data[correct_column_order]  # Menyesuaikan urutan kolom
+
+            X_test_scaled = X_test_scaled[correct_column_order]  # Menyesuaikan urutan kolom
 
             # Menampilkan DataFrame setelah penyusunan kolom yang benar
             st.write("Data setelah penyusunan kolom yang benar:")
-            st.write(input_data)
+            st.write(X_test_scaled)
+
+            # Melakukan prediksi menggunakan model yang sudah dilatih
+            prediction = model.predict(X_test_scaled)
+
+            # Menampilkan hasil prediksi
+            st.write(f"Prediksi waktu pengantaran (Delivery Time) adalah: {prediction[0]:.2f} menit")
