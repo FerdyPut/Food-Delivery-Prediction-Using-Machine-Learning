@@ -52,18 +52,12 @@ def eda():
         </style>
 
         <div class="insight-box">
-
-            
-            <strong>Kategorik:</strong>
+            <h4>Data Food Time Delivery tersebut merupakan data yang didapatkan dari Kaggle dengan rincian variabel-variabelnya:</h4>
             <ul>
                 <li><strong>Weather</strong>: Kondisi cuaca pada saat pengiriman (misalnya: Clear, Rainy, etc.)</li>
                 <li><strong>Traffic_Level</strong>: Tingkat kemacetan lalu lintas (misalnya: Low, Moderate, High)</li>
                 <li><strong>Time_of_Day</strong>: Waktu pengiriman dilakukan (misalnya: Morning, Afternoon, Evening)</li>
                 <li><strong>Vehicle_Type</strong>: Jenis kendaraan yang digunakan oleh kurir untuk pengiriman (misalnya: Motor, Car, etc.)</li>
-            </ul>
-            
-            <strong>Numerik:</strong>
-            <ul>
                 <li><strong>Distance_km</strong>: Jarak yang ditempuh oleh kurir dalam kilometer untuk pengiriman</li>
                 <li><strong>Courier_Experience_yrs</strong>: Pengalaman kurir dalam tahun</li>
                 <li><strong>Delivery_Time_min</strong>: Waktu yang dibutuhkan untuk pengiriman dalam menit</li>
