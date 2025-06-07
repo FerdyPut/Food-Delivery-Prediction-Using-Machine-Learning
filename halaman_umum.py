@@ -4,12 +4,18 @@ import streamlit as st
 # Page config
 st.set_page_config(page_title="Food Time Delivery Project", layout="wide")
 
+# Logo dan Title di atas (dalam satu baris)
+col1, col2 = st.columns([1, 10])
+with col1:
+    st.image("https://upload.wikimedia.org/wikipedia/commons/7/75/Mister_Donut_delivery_in_Japan_2010.jpg", width=60)
+with col2:
+    st.title("Food Time Delivery Tools")
+
 # NAVIGATION BAR (ATAS)
-st.title("Food Time Delivery Tools")
 selected = option_menu(
-    menu_title= None,
+    menu_title=None,
     options=["Introduction", "EDA", "Prediction Tools"],
-    icons=["book", "archive","tools"],
+    icons=["book", "archive", "tools"],
     orientation="horizontal",
     styles={
         "container": {"padding": "0!important", "background-color": "#f0f2f6"},
