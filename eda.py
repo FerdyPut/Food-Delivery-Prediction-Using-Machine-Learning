@@ -35,28 +35,28 @@ def eda():
     numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
 
     # Menampilkan Korelasi antar variabel menggunakan Heatmap hanya untuk variabel numerik
-    with st.expander("Correlation Heatmap (Numerical Variables Only)"):
+    with st.expander("Correlation Heatmap (Klik untuk melihat)"):
         corr = df[numeric_columns].corr()  # Menghitung korelasi hanya untuk kolom numerik
         fig, ax = plt.subplots(figsize=(4, 3))  # Menyesuaikan ukuran lebih kecil
         sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
         st.pyplot(fig)
 
     # EDA Visualizations (Boxplot, Histogram, Scatter Plot)
-    with st.expander("Boxplot: Pilih variabel untuk melihat Boxplot"):
+    with st.expander("Boxplot (Klik untuk melihat) "):
         selected_boxplot = st.selectbox("Pilih variabel untuk Boxplot", numeric_columns)
         fig, ax = plt.subplots(figsize=(4, 3))  # Ukuran kecil
         sns.boxplot(data=df, x=selected_boxplot, ax=ax)
         ax.set_title(f'Boxplot: {selected_boxplot}')
         st.pyplot(fig)
 
-    with st.expander("Histogram: Pilih variabel untuk melihat Histogram"):
+    with st.expander("Histogram (Klik untuk melihat)"):
         selected_hist = st.selectbox("Pilih variabel untuk Histogram", numeric_columns)
         fig, ax = plt.subplots(figsize=(4, 3))  # Ukuran kecil
         sns.histplot(df[selected_hist], kde=True, ax=ax)
         ax.set_title(f'Histogram: {selected_hist}')
         st.pyplot(fig)
 
-    with st.expander("Scatter Plot: Pilih variabel untuk melihat Scatter Plot (Y = Delivery Time)"):
+    with st.expander("Scatter Plot (Klik untuk melihat)"):
         selected_x = st.selectbox("Pilih variabel untuk sumbu X", numeric_columns)
         selected_y = 'Delivery_Time_min'  # Y tetap pada 'Delivery_Time_min'
         fig, ax = plt.subplots(figsize=(4, 3))  # Ukuran kecil
