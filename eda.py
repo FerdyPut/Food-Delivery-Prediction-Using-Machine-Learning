@@ -24,21 +24,23 @@ def eda():
         st.error(f"Error loading dataset: {e}")
         return
         
-    # Statistik Deskriptif
-    st.write("Descriptive Statistics:")
-    st.write(df.describe())
+    # EDA Visualizations (Boxplot, Histogram, Scatter Plot)
+    
+    # Descriptive Statistics
+    with st.expander("Descriptive Statistics"):
+        st.write(df.describe())
+
+    # Korelasi antar variabel menggunakan Heatmap hanya untuk variabel numerik
+    with st.expander("Correlation Heatmap (Numerical Variables Only)"):
+        numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
+        corr = df[numeric_columns].corr()  # Menghitung korelasi hanya untuk kolom numerik
+        fig, ax = plt.subplots(figsize=(4, 3))  # Menyesuaikan ukuran lebih kecil
+        sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
+        st.pyplot(fig)
 
     # Pilih kolom numerik untuk analisis
     numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
 
-    # Menampilkan Korelasi antar variabel menggunakan Heatmap hanya untuk variabel numerik
-    st.write("Correlation Heatmap (Numerical Variables Only):")
-    corr = df[numeric_columns].corr()  # Menghitung korelasi hanya untuk kolom numerik
-    fig, ax = plt.subplots(figsize=(3, 2))  # Menyesuaikan ukuran lebih kecil
-    sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
-    st.pyplot(fig)
-
-    # EDA Visualizations (Boxplot, Histogram, Scatter Plot)
     with st.expander("Boxplot: Pilih variabel untuk melihat Boxplot"):
         selected_boxplot = st.selectbox("Pilih variabel untuk Boxplot", numeric_columns)
         fig, ax = plt.subplots(figsize=(4, 3))  # Ukuran kecil
