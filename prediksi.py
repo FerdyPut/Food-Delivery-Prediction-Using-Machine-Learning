@@ -116,9 +116,3 @@ def prediksi():
             # Menampilkan DataFrame yang telah diproses dan disusun ulang
             st.write("Data setelah scaling dan penyusunan kolom yang benar:")
             st.write(input_data)
-
-            # Melakukan prediksi menggunakan model yang sudah dilatih
-            prediction = model.predict(input_data)
-
-            # Menampilkan hasil prediksi
-            st.write(f"Prediksi waktu pengantaran (Delivery Time) adalah: {prediction[0]:.2f} menit")
