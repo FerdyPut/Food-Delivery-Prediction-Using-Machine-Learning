@@ -120,9 +120,6 @@ def prediksi():
             # Lakukan prediksi
             prediction = model.predict(input_data)
 
-            # Menampilkan hasil prediksi
-            st.write(f"Prediksi waktu pengantaran (Delivery Time) adalah: {prediction[0]:.2f} menit")
-            
             # Menampilkan hasil prediksi (pastikan kita mengambil nilai yang benar)
             if prediction.ndim == 1:  # Jika hasil prediksi berupa array 1D
                 st.write(f"Prediksi waktu pengantaran (Delivery Time) adalah: {prediction[0]:.2f} menit")
