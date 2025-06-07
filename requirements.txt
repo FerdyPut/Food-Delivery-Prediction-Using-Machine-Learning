@@ -1,2 +1,8 @@
 streamlit-option-menu 
 seaborn
+nbformat
+joblib
+matplotlib
+seaborn
+scikit-learn
+statsmodels
