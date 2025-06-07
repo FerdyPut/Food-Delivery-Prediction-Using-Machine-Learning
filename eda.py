@@ -144,6 +144,39 @@ def eda():
         """, unsafe_allow_html=True)
 
     # EDA Visualizations (Boxplot, Histogram, Scatter Plot)
+    with st.expander("Scatter Plot (Klik untuk melihat)"):
+        selected_x = st.selectbox("Pilih variabel untuk sumbu X", numeric_columns)
+        selected_y = 'Delivery_Time_min'  # Y tetap pada 'Delivery_Time_min'
+        fig, ax = plt.subplots(figsize=(4, 3))  # Ukuran kecil
+        sns.scatterplot(data=df, x=selected_x, y=selected_y, ax=ax)
+        ax.set_title(f'Scatter Plot: {selected_x} vs {selected_y}')
+        st.pyplot(fig)
+        st.markdown(f"""
+        <style>
+        .insight-box {{
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 6px solid #007acc;
+            margin-bottom: 15px;
+        }}
+        .insight-box h4 {{
+            color: #007acc;
+            font-size: 16px;
+            font-weight: bold;
+        }}
+        .insight-box p {{
+            font-size: 14px;
+            font-weight: normal;
+            color: #555;
+        }}
+        </style>
+
+        <div class="insight-box">
+            <h4><strong>Insight:</strong></h4>
+            <p>Hanya variabel <strong>Distance_km</strong> yang cenderung memiliki hubungan cukup kuat dengan variabel Target ('Delivery_time_min') karena korelasinya positif linear ke atas. Sedangkan variabel lainnya, tidak adanya hubungan yang cukup kuat (alias lemah) karena korelasinya menyebar dan tidak membentuk garis linear ke atas/ke bawah.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
     with st.expander("Boxplot (Klik untuk melihat) "):
         selected_boxplot = st.selectbox("Pilih variabel untuk Boxplot", numeric_columns)
         fig, ax = plt.subplots(figsize=(4, 3))  # Ukuran kecil
@@ -187,11 +220,6 @@ def eda():
             border-left: 6px solid #007acc;
             margin-bottom: 15px;
         }}
-        .insight-box h4 {{
-            color: #007acc;
-            font-size: 16px;
-            font-weight: bold;
-        }}
         .insight-box p {{
             font-size: 14px;
             font-weight: normal;
@@ -200,15 +228,9 @@ def eda():
         </style>
 
         <div class="insight-box">
-            <h4><strong>Insight:</strong></h4>
+            <strong>Insight:</strong>
             <p>Histogram pada <strong>{selected_hist}</strong> menunjukkan bahwa distribusinya cenderung membentuk simetris, tidak ada indikasi skewness. Sehingga, mendekati normal datanya. Selain itu, memang datanya ini sudah mengalami tahap cleaning data sehingga bersih datanya.</p>
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("Scatter Plot (Klik untuk melihat)"):
-        selected_x = st.selectbox("Pilih variabel untuk sumbu X", numeric_columns)
-        selected_y = 'Delivery_Time_min'  # Y tetap pada 'Delivery_Time_min'
-        fig, ax = plt.subplots(figsize=(4, 3))  # Ukuran kecil
-        sns.scatterplot(data=df, x=selected_x, y=selected_y, ax=ax)
-        ax.set_title(f'Scatter Plot: {selected_x} vs {selected_y}')
-        st.pyplot(fig)
+
