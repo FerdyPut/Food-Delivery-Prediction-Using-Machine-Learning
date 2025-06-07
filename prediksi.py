@@ -32,12 +32,14 @@ def prediksi():
     # Membuat DataFrame untuk input pengguna
     input_data = pd.DataFrame([[distance_km, courier_experience_yrs, preparation_time_min, weather, traffic_level, time_of_day, vehicle_type]],
                               columns=['Distance_km', 'Courier_Experience_yrs', 'Preparation_Time_min', 'Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type'])
-
-    # Memuat model, scaler dan encoder yang telah disimpan
-    model = pickle.load(open('food_delivery_model.pkl', 'rb'))
+    
+    # Memuat model Linear Regression yang telah disimpan
+    model_url = "https://dl.dropboxusercontent.com/scl/fi/hfj45bbigcyvsup9aeipf/Model-Linear-Regression.pkl?rlkey=vggmunmapqzgthbcj2puiohu6"
+    model = load_pickle_from_dropbox(model_url)
 
     # Memuat scaler untuk normalisasi data
-    scaler = pickle.load(open('scaler.pkl', 'rb'))
+    scaler_url = "https://dl.dropboxusercontent.com/scl/fi/bzuklawrhusvzw1blbozq/scaler.pkl?rlkey=wi6cqgkcrm94du7ce4qt5fx8e"
+    scaler = load_pickle_from_dropbox(scaler_url)
 
     # Memuat OneHotEncoder untuk kolom-kolom kategorik yang telah disimpan
     weather_ohe_url = "https://dl.dropboxusercontent.com/scl/fi/fnjz9ovnvs66cut7e8jig/Weather_ohe.pkl?rlkey=2my2uri7b7fgcmrdtrt2eoak4"
