@@ -95,8 +95,10 @@ def prediksi():
             st.write("Data setelah One-Hot Encoding:")
             st.write(input_data)
 
-            # Melakukan scaling untuk kolom numerik
-            input_data_numeric = input_data[['Distance_km','Preparation_Time_min', 'Courier_Experience_yrs']] 
+            # Menyusun kembali kolom numerik sesuai dengan urutan yang digunakan saat pelatihan
+            input_data_numeric = input_data[['Distance_km', 'Preparation_Time_min', 'Courier_Experience_yrs']]
+
+            # Melakukan scaling menggunakan StandardScaler yang telah dilatih
             input_data_scaled = scaler.transform(input_data_numeric)
 
             # Menyusun kembali DataFrame setelah scaling
@@ -118,7 +120,6 @@ def prediksi():
             # Menampilkan DataFrame setelah penyusunan kolom yang benar
             st.write("Data setelah penyusunan kolom yang benar:")
             st.write(input_data)
-
             # Melakukan prediksi menggunakan model yang sudah dilatih
             prediction = model.predict(input_data)
 
