@@ -101,7 +101,4 @@ def prediksi():
             # Melakukan scaling menggunakan StandardScaler yang telah dilatih
             input_data_scaled = scaler.transform(input_data_numeric)
 
-            # Menyusun kembali DataFrame setelah scaling
-            input_data_scaled_df = pd.DataFrame(input_data_scaled, columns=input_data_numeric.columns, index=input_data.index)
-
-            st.write(input_data_scaled_df)
+            st.write(input_data_scaled)
