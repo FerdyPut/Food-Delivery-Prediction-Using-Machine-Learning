@@ -52,7 +52,7 @@ def eda():
         </style>
 
         <div class="insight-box">
-            <h4>Data Food Time Delivery tersebut merupakan data yang didapatkan dari Kaggle dengan rincian variabel-variabelnya:</h4>
+
             
             <strong>Kategorik:</strong>
             <ul>
