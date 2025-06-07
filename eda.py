@@ -108,6 +108,42 @@ def eda():
         sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
         st.pyplot(fig)
 
+        st.markdown("""
+        <style>
+        .insight-box {
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 6px solid #007acc;
+            margin-bottom: 15px;
+        }
+        .insight-box ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .insight-box h4 {
+            color: #007acc;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .insight-box li {
+            font-size: 14px;
+            font-weight: normal;
+            color: #555;
+        }
+        </style>
+
+        <div class="insight-box">
+            <strong> Insight: </strong>
+            <h4>Berdasarkan korelasi heatmap antara variabel Fitur dengan variabel Target, yaitu 'Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km' vs 'Delivery_Time_min':</h4>
+            <ul>
+                <li>Nilai korelasinya yang paling lemah adalah variabel 'Courier_Experience_yrs' terhadap 'Delivery_Time_min , yaitu mendekati 0 (-0.09). Make sense, jika scatterplotnya tidak membentuk korelasi positif/negatif.</li>
+                <li>Nilai korelasinya yang lemah adalah variabel 'Preparation_Time_min' terhadap 'Delivery_Time_min' , yaitu mendekati 0 (0.31). Make sense, jika scatterplotnya tidak membentuk korelasi positif/negatif.</li>
+                <li>Nilai korelasinya yang cukup kuat adalah variabel 'Distance_km' terhadap 'Delivery_Time_min' , yaitu mendekati 0 (0.79). Make sense, jika membentuk korelasi positif, karena memang ada indikasi hubungan yang cukup kuat.</li>
+
+            </ul>
+        </div>
+    """, unsafe_allow_html=True)
+
     # EDA Visualizations (Boxplot, Histogram, Scatter Plot)
     with st.expander("Boxplot (Klik untuk melihat) "):
         selected_boxplot = st.selectbox("Pilih variabel untuk Boxplot", numeric_columns)
