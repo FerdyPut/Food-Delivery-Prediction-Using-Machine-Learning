@@ -133,16 +133,15 @@ def eda():
         </style>
 
         <div class="insight-box">
-            <strong> Insight: </strong>
-            <h4>Berdasarkan korelasi heatmap antara variabel Fitur dengan variabel Target, yaitu 'Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km' vs 'Delivery_Time_min':</h4>
+            <h4><strong>Insight:</strong></h4>
+            <p>Berdasarkan korelasi heatmap antara variabel Fitur dengan variabel Target, yaitu 'Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km' vs 'Delivery_Time_min':</p>
             <ul>
-                <li>Nilai korelasinya yang paling lemah adalah variabel 'Courier_Experience_yrs' terhadap 'Delivery_Time_min , yaitu mendekati 0 (-0.09). Make sense, jika scatterplotnya tidak membentuk korelasi positif/negatif.</li>
-                <li>Nilai korelasinya yang lemah adalah variabel 'Preparation_Time_min' terhadap 'Delivery_Time_min' , yaitu mendekati 0 (0.31). Make sense, jika scatterplotnya tidak membentuk korelasi positif/negatif.</li>
-                <li>Nilai korelasinya yang cukup kuat adalah variabel 'Distance_km' terhadap 'Delivery_Time_min' , yaitu mendekati 0 (0.79). Make sense, jika membentuk korelasi positif, karena memang ada indikasi hubungan yang cukup kuat.</li>
-
+                <li><strong>Nilai korelasi yang paling lemah</strong> adalah variabel 'Courier_Experience_yrs' terhadap 'Delivery_Time_min', yaitu mendekati 0 (-0.09). Make sense, jika scatterplotnya tidak membentuk korelasi positif/negatif.</li>
+                <li><strong>Nilai korelasi yang lemah</strong> adalah variabel 'Preparation_Time_min' terhadap 'Delivery_Time_min', yaitu mendekati 0 (0.31). Make sense, jika scatterplotnya tidak membentuk korelasi positif/negatif.</li>
+                <li><strong>Nilai korelasi yang cukup kuat</strong> adalah variabel 'Distance_km' terhadap 'Delivery_Time_min', yaitu mendekati 0 (0.79). Make sense, jika membentuk korelasi positif, karena memang ada indikasi hubungan yang cukup kuat.</li>
             </ul>
         </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
     # EDA Visualizations (Boxplot, Histogram, Scatter Plot)
     with st.expander("Boxplot (Klik untuk melihat) "):
