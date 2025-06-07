@@ -103,8 +103,8 @@ def prediksi():
 
             # Kolom yang benar-benar digunakan saat pelatihan (harus sama persis dengan yang ada saat pelatihan)
             correct_column_order = [
-                'Weather_Clear', 'Weather_Foggy', 'Weather_Rainy', 'Weather_Snowy', 'Weather_Windy',
-                'Traffic_Level_Low', 'Traffic_Level_Medium', 'Traffic_Level_High', 
+                'Weather_Clear', 'Weather_Foggy', 'Weather_Rainy', 'Weather_Snowy', 'Weather_Windy','Traffic_Level_High', 
+                'Traffic_Level_Low', 'Traffic_Level_Medium', 
                 'Vehicle_Type_Bike', 'Vehicle_Type_Car', 'Vehicle_Type_Scooter', 
                 'Time_of_Day_Afternoon', 'Time_of_Day_Evening', 'Time_of_Day_Morning', 'Time_of_Day_Night',
                 'Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km'
@@ -121,3 +121,8 @@ def prediksi():
             st.write("Input Data setelah urutan kolom yang benar:")
             st.write(input_data)
 
+            # Lakukan prediksi
+            prediction = model.predict(input_data)
+
+            # Menampilkan hasil prediksi
+            st.write(f"Prediksi waktu pengantaran (Delivery Time) adalah: {prediction[0]:.2f} menit")
