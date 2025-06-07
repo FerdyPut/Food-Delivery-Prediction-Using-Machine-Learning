@@ -30,7 +30,7 @@ def prediksi():
 
     # Membuat DataFrame untuk input pengguna
     input_data = pd.DataFrame([[distance_km, preparation_time_min, courier_experience_yrs, weather, traffic_level, vehicle_type, time_of_day]],
-                              columns=['Distance_km', 'Preparation_Time_min', 'Courier_Experience_yrs', 'Weather', 'Traffic_Level', 'Vehicle_Type', 'Time_of_Day'])
+                              columns=['Weather', 'Traffic_Level', 'Vehicle_Type', 'Time_of_Day','Distance_km', 'Preparation_Time_min', 'Courier_Experience_yrs'])
 
     # Memuat model Linear Regression yang telah disimpan
     model_url = "https://dl.dropboxusercontent.com/scl/fi/hfj45bbigcyvsup9aeipf/Model-Linear-Regression.pkl?rlkey=vggmunmapqzgthbcj2puiohu6"
