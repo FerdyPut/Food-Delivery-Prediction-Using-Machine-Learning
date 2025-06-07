@@ -112,8 +112,14 @@ def prediksi():
             # Lakukan prediksi
             prediction = model.predict(input_data)
 
-            # Menampilkan hasil prediksi (pastikan kita mengambil nilai yang benar)
-            if prediction.ndim == 1:  # Jika hasil prediksi berupa array 1D
-                st.write(f"Prediksi waktu pengantaran (Delivery Time) adalah: {prediction[0]:.2f} menit")
-            else:  # Jika hasil prediksi berupa array 2D atau matriks
-                st.write(f"Prediksi waktu pengantaran (Delivery Time) adalah: {prediction[0][0]:.2f} menit")
+            # Menampilkan hasil prediksi dengan style
+            predicted_time = prediction[0] if prediction.ndim == 1 else prediction[0][0]
+
+            # Membuat box untuk prediksi
+            st.markdown(f"""
+                <div style="background-color: #f9f9f9; border: 2px solid #007acc; padding: 20px; border-radius: 10px; text-align: center; transition: transform 0.3s ease-in-out; cursor: pointer;" 
+                    onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <h3 style="font-size: 24px; color: #007acc;">Prediksi Waktu Pengantaran (Delivery Time):</h3>
+                    <h2 style="font-size: 36px; color: #333; font-weight: bold;">{predicted_time:.2f} menit</h2>
+                </div>
+            """, unsafe_allow_html=True)
