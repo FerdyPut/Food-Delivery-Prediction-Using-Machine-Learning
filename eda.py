@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 def eda():
     # Menampilkan informasi di bagian atas
-    st.info("Ini adalah Bagian EDA! Dimana EDA ini akan menampilkan terkait tabel data Food Time Delivery seperti apa, kemudian heatmap correlation, scatterplot, dan distribusik data dari variabel numerik")
+    st.info("Ini adalah Bagian EDA! Dimana EDA ini akan menampilkan terkait tabel data Food Time Delivery seperti apa, kemudian heatmap correlation, scatterplot, dan distribusi data dari variabel numerik")
     
     # URL Dropbox yang telah diubah menjadi link langsung
     url = 'https://www.dropbox.com/scl/fi/n5zlvmvafydjweliu55f8/Data-FTD-Clean.csv?rlkey=fax9s8fnda5gxdnfh9y4guzu2&st=eq0a6s5v&dl=1'
@@ -26,6 +26,21 @@ def eda():
     # Menampilkan DataFrame di dalam st.expander()
     with st.expander("Dataset Preview (Klik untuk melihat)"):
         st.write(df.head())  # Menampilkan 5 baris pertama untuk verifikasi
+
+        st.markdown("""
+    **Deskripsi Variabel:**
+    
+    - **Kategorik:**
+        - <span title="Kondisi cuaca pada saat pengiriman seperti Clear, Rainy, etc.">**Weather**</span>: Kondisi cuaca pada saat pengiriman (misalnya: Clear, Rainy, etc.)
+        - <span title="Tingkat kemacetan lalu lintas seperti Low, Moderate, High">**Traffic_Level**</span>: Tingkat kemacetan lalu lintas (misalnya: Low, Moderate, High)
+        - <span title="Waktu pengiriman dilakukan seperti Morning, Afternoon, Evening">**Time_of_Day**</span>: Waktu pengiriman dilakukan (misalnya: Morning, Afternoon, Evening)
+        - <span title="Jenis kendaraan yang digunakan oleh kurir untuk pengiriman seperti Motor, Car">**Vehicle_Type**</span>: Jenis kendaraan yang digunakan oleh kurir untuk pengiriman (misalnya: Motor, Car, etc.)
+    
+    - **Numerik:**
+        - <span title="Jarak yang ditempuh oleh kurir dalam kilometer untuk pengiriman">**Distance_km**</span>: Jarak yang ditempuh oleh kurir dalam kilometer untuk pengiriman
+        - <span title="Pengalaman kurir dalam tahun">**Courier_Experience_yrs**</span>: Pengalaman kurir dalam tahun
+        - <span title="Waktu yang dibutuhkan untuk pengiriman dalam menit">**Delivery_Time_min**</span>: Waktu yang dibutuhkan untuk pengiriman dalam menit
+    """, unsafe_allow_html=True)
 
     # Statistik Deskriptif
     with st.expander("Descriptive Statistics"):
