@@ -159,11 +159,6 @@ def eda():
             border-left: 6px solid #007acc;
             margin-bottom: 15px;
         }}
-        .insight-box h4 {{
-            color: #007acc;
-            font-size: 16px;
-            font-weight: bold;
-        }}
         .insight-box p {{
             font-size: 14px;
             font-weight: normal;
@@ -172,7 +167,7 @@ def eda():
         </style>
 
         <div class="insight-box">
-            <h4><strong>Insight:</strong></h4>
+            <strong>Insight:</strong>
             <p>Hanya variabel <strong>Distance_km</strong> yang cenderung memiliki hubungan cukup kuat dengan variabel Target ('Delivery_time_min') karena korelasinya positif linear ke atas. Sedangkan variabel lainnya, tidak adanya hubungan yang cukup kuat (alias lemah) karena korelasinya menyebar dan tidak membentuk garis linear ke atas/ke bawah.</p>
         </div>
         """, unsafe_allow_html=True)
