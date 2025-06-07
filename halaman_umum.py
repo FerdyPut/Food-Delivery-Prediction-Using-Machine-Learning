@@ -31,3 +31,6 @@ if selected == "Introduction":
 elif selected == "EDA":
     import eda
     eda.eda()
+elif selected == "Prediction Tools":
+    import prediksi
+    prediksi.prediksi()
