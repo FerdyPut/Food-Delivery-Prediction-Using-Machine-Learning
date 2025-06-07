@@ -135,7 +135,7 @@ def prediksi():
                 'Weather_Clear', 'Weather_Foggy', 'Weather_Rainy', 'Weather_Snowy', 'Weather_Windy',
                 'Traffic_Level_Low', 'Traffic_Level_Medium', 'Traffic_Level_High', 
                 'Vehicle_Type_Bike', 'Vehicle_Type_Car', 'Vehicle_Type_Scooter', 
-                'Time_of_Day_Afternoon', 'Time_of_Day_Evening', 'Time_of_Day_Morning', 'Time_of_Day_Night','Distance_km', 'Preparation_Time_min', 'Courier_Experience_yrs'
+                'Time_of_Day_Afternoon', 'Time_of_Day_Evening', 'Time_of_Day_Morning', 'Time_of_Day_Night', 'Preparation_Time_min', 'Courier_Experience_yrs','Distance_km'
             ]
             input_data = input_data[correct_column_order]  # Menyesuaikan urutan kolom
 
