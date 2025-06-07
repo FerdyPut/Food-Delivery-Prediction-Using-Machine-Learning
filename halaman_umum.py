@@ -25,8 +25,6 @@ def tampilkan_halaman_umum():
     - **Menu Tab terdapat Exploratory Data Analysis (EDA) dan Prediction Test**.
     - Pada Menu EDA sebagai visualisasi atau analisis statistik terkait kasus Food Time Delivery.
     - Pada Menu Prediction Test terdapat Prediction Test yang digunakan untuk menguji hasil prediksi waktu pengantaran (Food Time Delivery) dari variabel-variabel yang tersedia
-    - Tools ini dibuat oleh: Ferdyansyah Permana Putra - DS30
-
-
+    - Tools ini dibuat oleh: Ferdyansyah Permana Putra - DS30.
     """)
 
