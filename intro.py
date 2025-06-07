@@ -18,7 +18,7 @@ else:
     greeting = "Selamat Malam"
 
 def tampilkan_halaman_umum():
-    st.info(f"{greeting} Diharapkan digunakan dengan baik! <b>Food Time Delivery Prediction.")
+    st.warning(f"{greeting} Diharapkan digunakan dengan baik! Food Time Delivery Prediction.")
     st.markdown(f"""
     <style>
         .hover-box {{
