@@ -46,6 +46,34 @@ def eda():
     with st.expander("Descriptive Statistics"):
         st.write(df.describe())
 
+        st.markdown("""
+        <style>
+        .insight-box {
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 6px solid #007acc;
+            margin-bottom: 15px;
+        }
+        .insight-box ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .insight-box li {
+            font-size: 14px;
+            font-weight: normal;
+            color: #555;
+        }
+        </style>
+        
+        <div class="insight-box">
+            <strong>Insight:</strong>
+            <ul>
+                <li><strong>Waktu persiapan rata-rata</strong> (10 menit) dan <strong>waktu pengantaran rata-rata</strong> (56 menit) menunjukkan bahwa sistem umumnya berjalan cukup efisien, tetapi ada variasi yang signifikan.</li>
+                <li><strong>Jarak pengantaran</strong> sangat bervariasi, dengan beberapa pengantaran sangat dekat (1 km) dan beberapa lainnya cukup jauh (hingga 19.9 km).</li>
+                <li><strong>Pengalaman kurir rata-rata</strong> adalah 4.5 tahun, tetapi ada beberapa kurir baru, yang tercermin dari pengalaman minimum 0 tahun.</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
     # Pilih kolom numerik untuk analisis
     numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
 
