@@ -74,7 +74,7 @@ def prediksi():
 
             # Menghapus kolom asli yang kategorikal
             input_data = input_data.drop(columns=['Weather'])
-
+            
             # Melakukan One-Hot Encoding untuk kolom 'Traffic_Level' menggunakan encoder yang sudah dilatih
             encoded_data_traffic_level = traffic_level_ohe.transform(input_data[['Traffic_Level']])
             encoded_columns_traffic_level = traffic_level_ohe.get_feature_names_out(['Traffic_Level'])
@@ -114,13 +114,12 @@ def prediksi():
             # Menghapus kolom asli yang kategorikal
             input_data = input_data.drop(columns=['Time_of_Day'])
 
-
             # Menampilkan DataFrame yang telah di-encode
             st.write("Data setelah One-Hot Encoding:")
             st.write(input_data)
 
             # Melakukan scaling untuk kolom numerik
-            input_data_numeric = input_data[['Distance_km','Preparation_Time_min', 'Courier_Experience_yrs' ]]
+            input_data_numeric = input_data[['Distance_km','Preparation_Time_min', 'Courier_Experience_yrs' ]] 
 
             # Melakukan scaling menggunakan StandardScaler yang telah dilatih
             input_data_scaled = scaler.transform(input_data_numeric)
