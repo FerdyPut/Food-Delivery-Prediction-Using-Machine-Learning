@@ -29,8 +29,8 @@ def prediksi():
     vehicle_type = st.selectbox("Jenis Kendaraan", ['Bike', 'Car', 'Scooter'])  # Kategorik
 
     # Membuat DataFrame untuk input pengguna
-    input_data = pd.DataFrame([[distance_km, courier_experience_yrs, preparation_time_min, weather, traffic_level, time_of_day, vehicle_type]],
-                              columns=['Distance_km', 'Courier_Experience_yrs', 'Preparation_Time_min', 'Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type'])
+    input_data = pd.DataFrame([[distance_km, preparation_time_min, courier_experience_yrs, weather, traffic_level,vehicle_type, time_of_day ]],
+                              columns=['Distance_km', 'Preparation_Time_min', 'Courier_Experience_yrs', 'Weather', 'Traffic_Level','Vehicle_Type', 'Time_of_Day', ])
 
     # Memuat model Linear Regression yang telah disimpan
     model_url = "https://dl.dropboxusercontent.com/scl/fi/hfj45bbigcyvsup9aeipf/Model-Linear-Regression.pkl?rlkey=vggmunmapqzgthbcj2puiohu6"
@@ -74,6 +74,13 @@ def prediksi():
 
             # Menghapus kolom asli yang kategorikal
             input_data = input_data.drop(columns=['Weather'])
+            
+            # Melakukan One-Hot Encoding untuk kolom 'Traffic_Level' menggunakan encoder yang sudah dilatih
+            encoded_data_traffic_level = traffic_level_ohe.transform(input_data[['Traffic_Level']])
+            encoded_columns_traffic_level = traffic_level_ohe.get_feature_names_out(['Traffic_Level'])
+
+            # Membuat DataFrame hasil encoding untuk 'Traffic_Level'
+            df_encoded_traffic_level = pd.DataFrame(encoded_data_traffic_level, columns=encoded_columns_traffic_level, index=input_data.index)
 
             # Melakukan One-Hot Encoding untuk kolom 'Vehicle_Type' menggunakan encoder yang sudah dilatih
             encoded_data_vehicle_type = vehicle_type_ohe.transform(input_data[['Vehicle_Type']])
@@ -101,13 +108,6 @@ def prediksi():
             # Menghapus kolom asli yang kategorikal
             input_data = input_data.drop(columns=['Time_of_Day'])
 
-            # Melakukan One-Hot Encoding untuk kolom 'Traffic_Level' menggunakan encoder yang sudah dilatih
-            encoded_data_traffic_level = traffic_level_ohe.transform(input_data[['Traffic_Level']])
-            encoded_columns_traffic_level = traffic_level_ohe.get_feature_names_out(['Traffic_Level'])
-
-            # Membuat DataFrame hasil encoding untuk 'Traffic_Level'
-            df_encoded_traffic_level = pd.DataFrame(encoded_data_traffic_level, columns=encoded_columns_traffic_level, index=input_data.index)
-
             # Menambahkan hasil encoding ke DataFrame input
             input_data = pd.concat([input_data, df_encoded_traffic_level], axis=1)
 
@@ -119,7 +119,7 @@ def prediksi():
             st.write(input_data)
 
             # Melakukan scaling untuk kolom numerik
-            input_data_numeric = input_data[['Distance_km', 'Courier_Experience_yrs', 'Preparation_Time_min']]
+            input_data_numeric = input_data[['Distance_km','Preparation_Time_min', 'Courier_Experience_yrs' ]]
 
             # Melakukan scaling menggunakan StandardScaler yang telah dilatih
             input_data_scaled = scaler.transform(input_data_numeric)
@@ -128,7 +128,7 @@ def prediksi():
             input_data_scaled_df = pd.DataFrame(input_data_scaled, columns=input_data_numeric.columns, index=input_data.index)
 
             # Menambahkan hasil scaling ke input_data yang sudah diencoding
-            input_data = pd.concat([input_data_scaled_df, input_data.drop(columns=['Distance_km', 'Courier_Experience_yrs', 'Preparation_Time_min'])], axis=1)
+            input_data = pd.concat([input_data_scaled_df, input_data.drop(columns=['Distance_km','Preparation_Time_min', 'Courier_Experience_yrs', ])], axis=1)
 
             # Menyusun ulang kolom agar sesuai dengan urutan yang diinginkan
             correct_column_order = [
