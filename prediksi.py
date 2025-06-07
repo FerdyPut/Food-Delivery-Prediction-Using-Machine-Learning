@@ -74,14 +74,20 @@ def prediksi():
 
             # Menghapus kolom asli yang kategorikal
             input_data = input_data.drop(columns=['Weather'])
-            
+
             # Melakukan One-Hot Encoding untuk kolom 'Traffic_Level' menggunakan encoder yang sudah dilatih
             encoded_data_traffic_level = traffic_level_ohe.transform(input_data[['Traffic_Level']])
             encoded_columns_traffic_level = traffic_level_ohe.get_feature_names_out(['Traffic_Level'])
 
             # Membuat DataFrame hasil encoding untuk 'Traffic_Level'
             df_encoded_traffic_level = pd.DataFrame(encoded_data_traffic_level, columns=encoded_columns_traffic_level, index=input_data.index)
+            
+            # Menambahkan hasil encoding ke DataFrame input
+            input_data = pd.concat([input_data, df_encoded_traffic_level], axis=1)
 
+            # Menghapus kolom asli yang kategorikal
+            input_data = input_data.drop(columns=['Traffic_Level'])
+           
             # Melakukan One-Hot Encoding untuk kolom 'Vehicle_Type' menggunakan encoder yang sudah dilatih
             encoded_data_vehicle_type = vehicle_type_ohe.transform(input_data[['Vehicle_Type']])
             encoded_columns_vehicle_type = vehicle_type_ohe.get_feature_names_out(['Vehicle_Type'])
@@ -108,11 +114,6 @@ def prediksi():
             # Menghapus kolom asli yang kategorikal
             input_data = input_data.drop(columns=['Time_of_Day'])
 
-            # Menambahkan hasil encoding ke DataFrame input
-            input_data = pd.concat([input_data, df_encoded_traffic_level], axis=1)
-
-            # Menghapus kolom asli yang kategorikal
-            input_data = input_data.drop(columns=['Traffic_Level'])
 
             # Menampilkan DataFrame yang telah di-encode
             st.write("Data setelah One-Hot Encoding:")
