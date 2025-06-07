@@ -4,6 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 def eda():
+    st.info("Ini adalah Bagian EDA!")
     # URL Dropbox yang telah diubah menjadi link langsung
     url = 'https://www.dropbox.com/scl/fi/rdvxgkihztj5b0buuxldl/Food_Delivery_Times.csv?rlkey=eg444qddox8isjz24m5ve81hf&st=elilrwwv&dl=1'
 
