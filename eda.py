@@ -153,21 +153,17 @@ def eda():
 
         st.markdown(f"""
         <style>
-        .insight-box {
+        .insight-box {{
             padding: 15px;
             background-color: #f9f9f9;
             border-left: 6px solid #007acc;
             margin-bottom: 15px;
-        }
-        .insight-box ul {
-            list-style-type: none;
-            padding-left: 20px;
-        }
-        .insight-box li {
+        }}
+        .insight-box p {{
             font-size: 14px;
             font-weight: normal;
             color: #555;
-        }
+        }}
         </style>
 
         <div class="insight-box">
