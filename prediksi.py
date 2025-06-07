@@ -91,10 +91,6 @@ def prediksi():
             input_data = pd.concat([input_data, df_encoded_time_of_day], axis=1)
             input_data = input_data.drop(columns=['Time_of_Day'])
 
-            # Menampilkan DataFrame yang telah di-encode
-            st.write("Data setelah One-Hot Encoding:")
-            st.write(input_data)
-
             # Pilih kolom numerik yang perlu diskalakan
             numerik_scale = ['Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km']
 
@@ -112,10 +108,6 @@ def prediksi():
 
             # Menyusun kolom input_data agar sesuai dengan urutan yang benar
             input_data = input_data[correct_column_order]
-
-            # Menampilkan DataFrame yang sudah diurutkan kolomnya
-            st.write("Input Data setelah urutan kolom yang benar:")
-            st.write(input_data)
 
             # Lakukan prediksi
             prediction = model.predict(input_data)
