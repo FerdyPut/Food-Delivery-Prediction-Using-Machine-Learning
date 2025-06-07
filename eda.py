@@ -133,8 +133,8 @@ def eda():
         </style>
 
         <div class="insight-box">
-            <h4><strong>Insight:</strong></h4>
-            <p>Berdasarkan korelasi heatmap antara variabel Fitur dengan variabel Target, yaitu 'Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km' vs 'Delivery_Time_min':</p>
+            <strong>Insight:</strong>
+            <h4>Berdasarkan korelasi heatmap antara variabel Fitur dengan variabel Target, yaitu 'Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km' vs 'Delivery_Time_min':</h4>
             <ul>
                 <li><strong>Nilai korelasi yang paling lemah</strong> adalah variabel 'Courier_Experience_yrs' terhadap 'Delivery_Time_min', yaitu mendekati 0 (-0.09). Make sense, jika scatterplotnya tidak membentuk korelasi positif/negatif.</li>
                 <li><strong>Nilai korelasi yang lemah</strong> adalah variabel 'Preparation_Time_min' terhadap 'Delivery_Time_min', yaitu mendekati 0 (0.31). Make sense, jika scatterplotnya tidak membentuk korelasi positif/negatif.</li>
