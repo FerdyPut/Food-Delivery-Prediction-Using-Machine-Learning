@@ -4,9 +4,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 def eda():
-    # Menampilkan informasi di bagian atas
-    st.info("Ini adalah Bagian EDA! Dimana EDA ini akan menampilkan terkait tabel data Food Time Delivery seperti apa, kemudian heatmap correlation, scatterplot, dan distribusi data dari variabel numerik")
-    
     # URL Dropbox yang telah diubah menjadi link langsung
     url = 'https://www.dropbox.com/scl/fi/n5zlvmvafydjweliu55f8/Data-FTD-Clean.csv?rlkey=fax9s8fnda5gxdnfh9y4guzu2&st=eq0a6s5v&dl=1'
 
@@ -23,6 +20,9 @@ def eda():
         st.error(f"Error loading dataset: {e}")
         return
         
+    # Menampilkan informasi di bagian atas
+    st.info("Ini adalah Bagian EDA! Dimana EDA ini akan menampilkan terkait tabel data Food Time Delivery seperti apa, kemudian heatmap correlation, scatterplot, dan distribusi data dari variabel numerik. Silahkan untuk melihat hasil EDA dan juga sudah terdapat insight dari setiap EDA.")
+    
     # Menampilkan DataFrame di dalam st.expander()
     with st.expander("Dataset Preview (Klik untuk melihat)"):
         st.write(df.head())  # Menampilkan 5 baris pertama untuk verifikasi
