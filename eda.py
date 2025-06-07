@@ -2,10 +2,22 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import gdown
+import os
+
+def download_data():
+    # Ganti dengan ID file Google Drive Anda
+    file_id = "12ckprkV_lfdjb5R5wqSLQi7_ltmv8LeO"
+    url = f"https://drive.google.com/uc?id={file_id}"
+    gdown.download(url, 'food_delivery_data.csv', quiet=False)
+
+# Cek apakah file sudah ada, jika belum maka download
+if not os.path.exists('food_delivery_data.csv'):
+    download_data()
 
 def EDA():
     # Load the dataset
-    df = pd.read_csv("food_delivery_data.csv")
+    df = pd.read_csv('food_delivery_data.csv')
 
     # Menampilkan preview data
     st.write("Dataset Preview:")
