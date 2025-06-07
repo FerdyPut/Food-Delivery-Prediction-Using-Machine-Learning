@@ -28,6 +28,6 @@ selected = option_menu(
 if selected == "Introduction":
     import intro
     intro.tampilkan_halaman_umum()
-elif selected == "eda":
+elif selected == "EDA":
     import eda
     eda.eda()
