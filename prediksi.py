@@ -96,14 +96,14 @@ def prediksi():
             st.write(input_data)
 
             # Melakukan scaling untuk kolom numerik
-            input_data_numeric = input_data[['Preparation_Time_min', 'Courier_Experience_yrs','Distance_km',]] 
+            input_data_numeric = input_data[['Distance_km','Preparation_Time_min', 'Courier_Experience_yrs']] 
             input_data_scaled = scaler.transform(input_data_numeric)
 
             # Menyusun kembali DataFrame setelah scaling
             input_data_scaled_df = pd.DataFrame(input_data_scaled, columns=input_data_numeric.columns, index=input_data.index)
 
             # Menambahkan hasil scaling ke input_data yang sudah diencoding
-            input_data = pd.concat([input_data_scaled_df, input_data.drop(columns=['Preparation_Time_min', 'Courier_Experience_yrs','Distance_km'])], axis=1)
+            input_data = pd.concat([input_data_scaled_df, input_data.drop(columns=['Distance_km','Preparation_Time_min', 'Courier_Experience_yrs'])], axis=1)
 
             # Menyusun ulang kolom agar sesuai dengan urutan yang diinginkan
             correct_column_order = [
