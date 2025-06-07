@@ -18,6 +18,7 @@ else:
     greeting = "Selamat Malam"
 
 def tampilkan_halaman_umum():
+    st.info(f"{greeting} Diharapkan digunakan dengan baik! <b>Food Time Delivery Prediction.")
     st.markdown(f"""
     <style>
         .hover-box {{
@@ -35,10 +36,7 @@ def tampilkan_halaman_umum():
             margin-left: 20px;
         }}
     </style>
-    
-    <div class="hover-box">
-        <b>{greeting}</b>, Diharapkan digunakan dengan baik! <b>Food Time Delivery Prediction</b>.
-    </div>
+
     <div class="hover-box">
         <ul class="content">
             <li><b>Menu Tab</b> terdapat Exploratory Data Analysis (EDA) dan Prediction Test.</li>
