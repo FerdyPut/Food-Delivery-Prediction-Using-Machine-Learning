@@ -23,7 +23,7 @@ def tampilkan_halaman_umum():
     <style>
         .hover-box {{
             background-color: #FFEB3B; /* Kuning */
-            padding: 5px;
+            padding: 0px;
             margin-bottom: 10px;
             border-radius: 2px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
