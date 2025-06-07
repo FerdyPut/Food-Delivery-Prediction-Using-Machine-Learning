@@ -52,6 +52,7 @@ def eda():
         </style>
 
         <div class="insight-box">
+            <strong> Insight: </strong>
             <h4>Data Food Time Delivery tersebut merupakan data yang didapatkan dari Kaggle dengan rincian variabel-variabelnya:</h4>
             <ul>
                 <li><strong>Weather</strong>: Kondisi cuaca pada saat pengiriman (misalnya: Clear, Rainy, etc.)</li>
