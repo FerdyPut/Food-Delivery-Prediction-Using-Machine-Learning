@@ -110,6 +110,10 @@ def prediksi():
                 'Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km'
             ]
 
+            # Menampilkan nama fitur yang diharapkan oleh model
+            st.write("Nama fitur yang diharapkan oleh model (feature_names_in_):")
+            st.write(model.feature_names_in_)
+
             # Menyusun kolom input_data agar sesuai dengan urutan yang benar
             input_data = input_data[correct_column_order]
 
@@ -117,8 +121,3 @@ def prediksi():
             st.write("Input Data setelah urutan kolom yang benar:")
             st.write(input_data)
 
-            # Melakukan prediksi menggunakan model yang sudah dilatih
-            prediction = model.predict(input_data)
-
-            # Menampilkan hasil prediksi
-            st.write(f"Prediksi waktu pengantaran (Delivery Time) adalah: {prediction[0]:.2f} menit")
