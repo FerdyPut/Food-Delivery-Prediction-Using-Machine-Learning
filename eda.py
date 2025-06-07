@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 def eda():
     # Menampilkan informasi di bagian atas
-    st.info("Ini adalah Bagian EDA! Menampilkan analisis statistik dan visualisasi data.")
+    st.info("Ini adalah Bagian EDA! Dimana EDA ini akan menampilkan terkait tabel data Food Time Delivery seperti apa, kemudian heatmap correlation, scatterplot, dan distribusik data dari variabel numerik")
     
     # URL Dropbox yang telah diubah menjadi link langsung
     url = 'https://www.dropbox.com/scl/fi/n5zlvmvafydjweliu55f8/Data-FTD-Clean.csv?rlkey=fax9s8fnda5gxdnfh9y4guzu2&st=eq0a6s5v&dl=1'
@@ -18,7 +18,7 @@ def eda():
         df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
 
         # Pastikan data berhasil dimuat
-        st.info("Dataset berhasil dibaca!")
+        st.warning("Dataset berhasil dibaca!")
     except Exception as e:
         st.error(f"Error loading dataset: {e}")
         return
