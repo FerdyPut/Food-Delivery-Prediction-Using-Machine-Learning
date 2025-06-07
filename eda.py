@@ -37,11 +37,6 @@ def eda():
             font-size: 14px;
         }
         
-        .insight-box h4 {
-            color: #007acc;
-            font-size: 16px;
-            font-weight: bold;
-        }
         
         .insight-box ul {
             list-style-type: none;
@@ -56,7 +51,7 @@ def eda():
         </style>
         
         <div class="insight-box">
-            <h4>Data Food Time Delivery tersebut merupakan data yang didapatkan dari Kaggle dengan rincian variabel-variabelnya:</h4>
+            <strong>Data Food Time Delivery tersebut merupakan data yang didapatkan dari Kaggle dengan rincian variabel-variabelnya:</strong>
             
             <strong>Kategorik:</strong>
             <ul>
@@ -75,6 +70,7 @@ def eda():
         </div>
                     
         """, unsafe_allow_html=True)
+
     # Statistik Deskriptif
     with st.expander("Descriptive Statistics"):
         st.write(df.describe())
