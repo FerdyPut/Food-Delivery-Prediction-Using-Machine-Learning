@@ -98,4 +98,10 @@ def prediksi():
             # Menyusun kembali kolom numerik sesuai dengan urutan yang digunakan saat pelatihan
             input_data_numeric = input_data[['Distance_km', 'Preparation_Time_min', 'Courier_Experience_yrs']]
 
-            st.write(input_data_numeric)
+            # Melakukan scaling menggunakan StandardScaler yang telah dilatih
+            input_data_scaled = scaler.transform(input_data_numeric)
+
+            # Menyusun kembali DataFrame setelah scaling
+            input_data_scaled_df = pd.DataFrame(input_data_scaled, columns=input_data_numeric.columns, index=input_data.index)
+
+            st.write(input_data_scaled_df)
