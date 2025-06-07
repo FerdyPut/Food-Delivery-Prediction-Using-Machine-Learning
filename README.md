@@ -1,5 +1,11 @@
 # Food Delivery Time Prediction Using Machine Learning
-Food Delivery Prediction Using Machine Learning (Hypertuning Parameters) 
+
+![image](https://github.com/user-attachments/assets/2cba3937-4949-42bd-821a-24443dd26045)
+
+## About Me:
+
+![image](https://github.com/user-attachments/assets/0ff09281-14ad-4328-9e6c-e3637974fc28)
+
 
 ## Case:
 Delays in food delivery are the most common complaint from customers of food delivery services. This issue can lead to decreased customer satisfaction, negative reviews directed at both the delivery personnel and the ordered outlet, and ultimately impact customer loyalty, where customers may no longer trust or choose to place orders from the same outlet or delivery service on the platform.
@@ -42,6 +48,15 @@ As a data scientist, I aim to predict optimal delivery times to minimize the ris
 
 - Delivery_Time_min: The total delivery time in minutes. This is the target variable to be predicted using the other features.
 
-  
 
 You can see link streamlit for test : https://foodtimedelivery-prediction.streamlit.app/
+
+Documentation:
+![image](https://github.com/user-attachments/assets/8bc7964f-6865-4432-858a-0298cbb40fba)
+
+Result of Models:
+![image](https://github.com/user-attachments/assets/4d0922bf-b8fa-42a9-8257-814b638ea0be)
+
+                                                              - THANK YOU -
+
+🔗 Connect with me: [LinkedIn](https://linkedin.com/in/ferdypput)
