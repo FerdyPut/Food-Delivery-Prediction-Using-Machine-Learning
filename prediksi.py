@@ -18,7 +18,7 @@ def prediksi():
     st.info("Prediction Tools ini digunakan untuk menguji dari variabel-variabel yang ada berkaitan dengan faktor pengantaran makanan nantinya didapatkan berapa perkiraan estimasi waktu pengantarannya. Hal ini, berguna untuk meminimalisisr resiko pengantaran.")
 
     # Input variabel dari pengguna
-    st.write("Masukkan data untuk memprediksi waktu pengantaran:")
+    st.warning("Masukkan data untuk memprediksi waktu pengantaran:")
     
     # Input untuk variabel-variabel prediksi
     distance_km = st.number_input("Jarak Pengantaran (km)", min_value=0.0, value=5.0, step=0.1)
