@@ -179,6 +179,32 @@ def eda():
         ax.set_title(f'Histogram: {selected_hist}')
         st.pyplot(fig)
 
+        st.markdown(f"""
+        <style>
+        .insight-box {{
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 6px solid #007acc;
+            margin-bottom: 15px;
+        }}
+        .insight-box h4 {{
+            color: #007acc;
+            font-size: 16px;
+            font-weight: bold;
+        }}
+        .insight-box p {{
+            font-size: 14px;
+            font-weight: normal;
+            color: #555;
+        }}
+        </style>
+
+        <div class="insight-box">
+            <h4><strong>Insight:</strong></h4>
+            <p>Histogram pada <strong>{selected_hist}</strong> menunjukkan bahwa distribusinya cenderung membentuk simetris, tidak ada indikasi skewness. Sehingga, mendekati normal datanya. Selain itu, memang datanya ini sudah mengalami tahap cleaning data sehingga bersih datanya.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
     with st.expander("Scatter Plot (Klik untuk melihat)"):
         selected_x = st.selectbox("Pilih variabel untuk sumbu X", numeric_columns)
         selected_y = 'Delivery_Time_min'  # Y tetap pada 'Delivery_Time_min'
