@@ -151,7 +151,7 @@ def eda():
         ax.set_title(f'Boxplot: {selected_boxplot}')
         st.pyplot(fig)
 
-        st.markdown("""
+        st.markdown(f"""
         <style>
         .insight-box {
             padding: 15px;
