@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 def eda():
     st.info("Ini adalah Bagian EDA!")
     # URL Dropbox yang telah diubah menjadi link langsung
-    url = 'https://www.dropbox.com/scl/fi/rdvxgkihztj5b0buuxldl/Food_Delivery_Times.csv?rlkey=eg444qddox8isjz24m5ve81hf&st=elilrwwv&dl=1'
+    url = 'https://www.dropbox.com/scl/fi/n5zlvmvafydjweliu55f8/Data-FTD-Clean.csv?rlkey=fax9s8fnda5gxdnfh9y4guzu2&st=eq0a6s5v&dl=1'
 
     try:
         # Membaca file CSV dari Dropbox
