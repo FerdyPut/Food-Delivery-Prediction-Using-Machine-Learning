@@ -101,7 +101,7 @@ def prediksi():
             # Lakukan scaling hanya pada kolom numerik
             input_data[numerik_scale] = scaler.transform(input_data[numerik_scale])
 
-            # Menyusun kolom agar sesuai dengan urutan yang diinginkan setelah proses scaling
+            # Kolom yang benar-benar digunakan saat pelatihan (harus sama persis dengan yang ada saat pelatihan)
             correct_column_order = [
                 'Weather_Clear', 'Weather_Foggy', 'Weather_Rainy', 'Weather_Snowy', 'Weather_Windy',
                 'Traffic_Level_Low', 'Traffic_Level_Medium', 'Traffic_Level_High', 
@@ -110,11 +110,11 @@ def prediksi():
                 'Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km'
             ]
 
-            # Menyusun kolom sesuai urutan yang benar
+            # Menyusun kolom input_data agar sesuai dengan urutan yang benar
             input_data = input_data[correct_column_order]
 
-            # Menampilkan DataFrame yang telah diproses dan disusun ulang
-            st.write("Data setelah scaling dan penyusunan kolom yang benar:")
+            # Menampilkan DataFrame yang sudah diurutkan kolomnya
+            st.write("Input Data setelah urutan kolom yang benar:")
             st.write(input_data)
 
             # Melakukan prediksi menggunakan model yang sudah dilatih
