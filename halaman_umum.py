@@ -4,10 +4,13 @@ import streamlit as st
 # Page config
 st.set_page_config(page_title="Food Time Delivery Project", layout="wide")
 
+# Logo dari Dropbox (direct link)
+logo_url = "https://www.dl.dropboxusercontent.com/scl/fi/s5nzl8o4j0r9qj67hws47/pngtree-delivery-boy-with-food-png-image_8876808.png?rlkey=1anrou8i0ilr3dptjlfq0qp3q&st=6hlcjnnx"
+
 # Logo dan Title di atas (dalam satu baris)
 col1, col2 = st.columns([1, 10])
 with col1:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/7/75/Mister_Donut_delivery_in_Japan_2010.jpg", width=60)
+    st.image(logo_url, width=60)
 with col2:
     st.title("Food Time Delivery Tools")
 
