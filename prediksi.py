@@ -6,6 +6,7 @@ from io import BytesIO
 
 # Fungsi untuk mengunduh dan memuat pickle dari Dropbox
 def load_pickle_from_dropbox(url):
+    # Mengunduh file pickle dari URL Dropbox
     response = requests.get(url)
     if response.status_code == 200:
         return pickle.load(BytesIO(response.content))  # Memuat pickle dari response content
@@ -63,7 +64,7 @@ def prediksi():
         # Menampilkan progress loading dengan spinner
         with st.spinner('Memproses data...'):
             # Memproses data input:
-            # 1. Melakukan One-Hot Encoding untuk kolom 'Weather'
+            # Melakukan One-Hot Encoding untuk kolom 'Weather'
             encoded_data_weather = weather_ohe.transform(input_data[['Weather']])
             encoded_columns_weather = weather_ohe.get_feature_names_out(['Weather'])
 
@@ -76,7 +77,7 @@ def prediksi():
             # Menghapus kolom asli yang kategorikal
             input_data = input_data.drop(columns=['Weather'])
 
-            # 2. Melakukan One-Hot Encoding untuk kolom 'Vehicle_Type'
+            # Melakukan One-Hot Encoding untuk kolom 'Vehicle_Type'
             encoded_data_vehicle_type = vehicle_type_ohe.transform(input_data[['Vehicle_Type']])
             encoded_columns_vehicle_type = vehicle_type_ohe.get_feature_names_out(['Vehicle_Type'])
 
@@ -89,7 +90,7 @@ def prediksi():
             # Menghapus kolom asli yang kategorikal
             input_data = input_data.drop(columns=['Vehicle_Type'])
 
-            # 3. Melakukan One-Hot Encoding untuk kolom 'Time_of_Day'
+            # Melakukan One-Hot Encoding untuk kolom 'Time_of_Day'
             encoded_data_time_of_day = time_of_day_ohe.transform(input_data[['Time_of_Day']])
             encoded_columns_time_of_day = time_of_day_ohe.get_feature_names_out(['Time_of_Day'])
 
@@ -102,7 +103,7 @@ def prediksi():
             # Menghapus kolom asli yang kategorikal
             input_data = input_data.drop(columns=['Time_of_Day'])
 
-            # 4. Melakukan One-Hot Encoding untuk kolom 'Traffic_Level'
+            # Melakukan One-Hot Encoding untuk kolom 'Traffic_Level'
             encoded_data_traffic_level = traffic_level_ohe.transform(input_data[['Traffic_Level']])
             encoded_columns_traffic_level = traffic_level_ohe.get_feature_names_out(['Traffic_Level'])
 
@@ -115,7 +116,7 @@ def prediksi():
             # Menghapus kolom asli yang kategorikal
             input_data = input_data.drop(columns=['Traffic_Level'])
 
-            # 5. Melakukan scaling untuk kolom numerik
+            # Melakukan scaling untuk kolom numerik
             input_data_numeric = input_data[['Distance_km', 'Courier_Experience_yrs', 'Preparation_Time_min']]
 
             # Melakukan scaling menggunakan StandardScaler yang telah dilatih
@@ -126,6 +127,16 @@ def prediksi():
 
             # Menambahkan hasil scaling ke input_data yang sudah diencoding
             input_data = pd.concat([input_data_scaled_df, input_data.drop(columns=['Distance_km', 'Courier_Experience_yrs', 'Preparation_Time_min'])], axis=1)
+
+            # Menyusun ulang kolom agar sesuai dengan urutan yang diinginkan
+            correct_column_order = [
+                'Distance_km', 'Preparation_Time_min', 'Courier_Experience_yrs', 
+                'Weather_Clear', 'Weather_Foggy', 'Weather_Rainy', 'Weather_Snowy', 'Weather_Windy',
+                'Traffic_Level_Low', 'Traffic_Level_Medium', 'Traffic_Level_High', 
+                'Vehicle_Type_Bike', 'Vehicle_Type_Car', 'Vehicle_Type_Scooter', 
+                'Time_of_Day_Afternoon', 'Time_of_Day_Evening', 'Time_of_Day_Morning', 'Time_of_Day_Night'
+            ]
+            input_data = input_data[correct_column_order]  # Menyesuaikan urutan kolom
 
             # Melakukan prediksi menggunakan model yang sudah dilatih
             prediction = model.predict(input_data)
@@ -151,4 +162,3 @@ def prediksi():
             actual_values = [10, 12, 14, 15, 13]  # Example, replace with actual values
             predicted_values = [prediction[0]] * len(actual_values)  # Example for visualization
             st.line_chart({"Actual": actual_values, "Predicted": predicted_values})
-
