@@ -28,7 +28,7 @@ def eda():
         st.write(df.head())  # Menampilkan 5 baris pertama untuk verifikasi
 
         st.markdown("""
-    **Deskripsi Variabel:**
+    **Data Food Time Delivery tersebut merupakan data yang didapatkan dari kaggle dengan rincian variabe-variabelnya:**
     
     - **Kategorik:**
         - <span title="Kondisi cuaca pada saat pengiriman seperti Clear, Rainy, etc.">**Weather**</span>: Kondisi cuaca pada saat pengiriman (misalnya: Clear, Rainy, etc.)
