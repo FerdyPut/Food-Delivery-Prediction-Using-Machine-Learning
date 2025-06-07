@@ -6,7 +6,6 @@ st.set_page_config(page_title="Food Time Delivery Project", layout="wide")
 
 # NAVIGATION BAR (ATAS)
 st.title("Food Time Delivery Tools")
-st.info("Selamat Datang di Website Case Food Time Delivery Tools!")
 selected = option_menu(
     menu_title= None,
     options=["Introduction", "EDA", "Prediction Tools"],
@@ -29,4 +28,6 @@ selected = option_menu(
 if selected == "Introduction":
     import intro
     intro.tampilkan_halaman_umum()
-
+elif selected == "eda":
+    import eda
+    eda.eda()
