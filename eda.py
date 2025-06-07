@@ -27,20 +27,55 @@ def eda():
     with st.expander("Dataset Preview (Klik untuk melihat)"):
         st.write(df.head())  # Menampilkan 5 baris pertama untuk verifikasi
 
+
         st.markdown("""
-    **Data Food Time Delivery tersebut merupakan data yang didapatkan dari kaggle dengan rincian variabe-variabelnya:**
-    
-    - **Kategorik:**
-        - <span title="Kondisi cuaca pada saat pengiriman seperti Clear, Rainy, etc.">**Weather**</span>: Kondisi cuaca pada saat pengiriman (misalnya: Clear, Rainy, etc.)
-        - <span title="Tingkat kemacetan lalu lintas seperti Low, Moderate, High">**Traffic_Level**</span>: Tingkat kemacetan lalu lintas (misalnya: Low, Moderate, High)
-        - <span title="Waktu pengiriman dilakukan seperti Morning, Afternoon, Evening">**Time_of_Day**</span>: Waktu pengiriman dilakukan (misalnya: Morning, Afternoon, Evening)
-        - <span title="Jenis kendaraan yang digunakan oleh kurir untuk pengiriman seperti Motor, Car">**Vehicle_Type**</span>: Jenis kendaraan yang digunakan oleh kurir untuk pengiriman (misalnya: Motor, Car, etc.)
-    
-    - **Numerik:**
-        - <span title="Jarak yang ditempuh oleh kurir dalam kilometer untuk pengiriman">**Distance_km**</span>: Jarak yang ditempuh oleh kurir dalam kilometer untuk pengiriman
-        - <span title="Pengalaman kurir dalam tahun">**Courier_Experience_yrs**</span>: Pengalaman kurir dalam tahun
-        - <span title="Waktu yang dibutuhkan untuk pengiriman dalam menit">**Delivery_Time_min**</span>: Waktu yang dibutuhkan untuk pengiriman dalam menit
-    """, unsafe_allow_html=True)
+        <style>
+        .insight-box {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .insight-box h4 {
+            color: #007acc;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .insight-box span {
+            font-weight: bold;
+        }
+        
+        .insight-box span[title] {
+            cursor: pointer;
+            border-bottom: 1px dotted #007acc;
+        }
+        
+        .insight-box span:hover {
+            color: #007acc;
+        }
+        </style>
+        
+        <div class="insight-box">
+            <h4>Data Food Time Delivery tersebut merupakan data yang didapatkan dari kaggle dengan rincian variabel-variabelnya:</h4>
+            
+            <strong>Kategorik:</strong>
+            <ul>
+                <li><span title="Kondisi cuaca pada saat pengiriman seperti Clear, Rainy, etc.">Weather</span>: Kondisi cuaca pada saat pengiriman (misalnya: Clear, Rainy, etc.)</li>
+                <li><span title="Tingkat kemacetan lalu lintas seperti Low, Moderate, High">Traffic_Level</span>: Tingkat kemacetan lalu lintas (misalnya: Low, Moderate, High)</li>
+                <li><span title="Waktu pengiriman dilakukan seperti Morning, Afternoon, Evening">Time_of_Day</span>: Waktu pengiriman dilakukan (misalnya: Morning, Afternoon, Evening)</li>
+                <li><span title="Jenis kendaraan yang digunakan oleh kurir untuk pengiriman seperti Motor, Car">Vehicle_Type</span>: Jenis kendaraan yang digunakan oleh kurir untuk pengiriman (misalnya: Motor, Car, etc.)</li>
+            </ul>
+            
+            <strong>Numerik:</strong>
+            <ul>
+                <li><span title="Jarak yang ditempuh oleh kurir dalam kilometer untuk pengiriman">Distance_km</span>: Jarak yang ditempuh oleh kurir dalam kilometer untuk pengiriman</li>
+                <li><span title="Pengalaman kurir dalam tahun">Courier_Experience_yrs</span>: Pengalaman kurir dalam tahun</li>
+                <li><span title="Waktu yang dibutuhkan untuk pengiriman dalam menit">Delivery_Time_min</span>: Waktu yang dibutuhkan untuk pengiriman dalam menit</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
 
     # Statistik Deskriptif
     with st.expander("Descriptive Statistics"):
