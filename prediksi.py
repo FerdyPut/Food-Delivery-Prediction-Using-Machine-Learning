@@ -95,18 +95,13 @@ def prediksi():
             st.write("Data setelah One-Hot Encoding:")
             st.write(input_data)
 
-            # Pisahkan kolom numerik yang akan diskalakan
+            # Pilih kolom numerik yang perlu diskalakan
             numerik_scale = ['Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km']
-            input_data_numeric = input_data[numerik_scale]
 
             # Lakukan scaling hanya pada kolom numerik
-            numerik_scaled_2 = scaler.transform(input_data_numeric)
+            input_data[numerik_scale] = scaler.transform(input_data[numerik_scale])
 
-            # Gabungkan hasil scaling dengan kolom kategorik yang sudah ada
-            X_test_scaled = pd.concat([input_data.drop(columns=numerik_scale), 
-                                    pd.DataFrame(numerik_scaled_2, columns=numerik_scale, index=input_data.index)], axis=1)
-
-            # Menyusun kembali kolom agar sesuai dengan urutan yang diinginkan
+            # Menyusun kolom agar sesuai dengan urutan yang diinginkan setelah proses scaling
             correct_column_order = [
                 'Weather_Clear', 'Weather_Foggy', 'Weather_Rainy', 'Weather_Snowy', 'Weather_Windy',
                 'Traffic_Level_Low', 'Traffic_Level_Medium', 'Traffic_Level_High', 
@@ -115,14 +110,15 @@ def prediksi():
                 'Preparation_Time_min', 'Courier_Experience_yrs', 'Distance_km'
             ]
 
-            X_test_scaled = X_test_scaled[correct_column_order]  # Menyesuaikan urutan kolom
+            # Menyusun kolom sesuai urutan yang benar
+            input_data = input_data[correct_column_order]
 
-            # Menampilkan DataFrame setelah penyusunan kolom yang benar
-            st.write("Data setelah penyusunan kolom yang benar:")
-            st.write(X_test_scaled)
+            # Menampilkan DataFrame yang telah diproses dan disusun ulang
+            st.write("Data setelah scaling dan penyusunan kolom yang benar:")
+            st.write(input_data)
 
             # Melakukan prediksi menggunakan model yang sudah dilatih
-            prediction = model.predict(X_test_scaled)
+            prediction = model.predict(input_data)
 
             # Menampilkan hasil prediksi
             st.write(f"Prediksi waktu pengantaran (Delivery Time) adalah: {prediction[0]:.2f} menit")
