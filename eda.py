@@ -151,6 +151,31 @@ def eda():
         ax.set_title(f'Boxplot: {selected_boxplot}')
         st.pyplot(fig)
 
+        st.markdown("""
+        <style>
+        .insight-box {
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 6px solid #007acc;
+            margin-bottom: 15px;
+        }
+        .insight-box ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .insight-box li {
+            font-size: 14px;
+            font-weight: normal;
+            color: #555;
+        }
+        </style>
+
+        <div class="insight-box">
+            <strong>Insight:</strong>
+            <p>Boxplot pada <strong>{selected_boxplot}</strong> tidak ada indikasi nilai ekstrem dan variasinya cukup ragam karena lebar boxplotnya cukup besar. Sehingga tidak ada indikasi outlier. Namun, sebenarnya ini data sudah bersih dalam artian sudah mengalami cleaning data.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
     with st.expander("Histogram (Klik untuk melihat)"):
         selected_hist = st.selectbox("Pilih variabel untuk Histogram", numeric_columns)
         fig, ax = plt.subplots(figsize=(4, 3))  # Ukuran kecil
