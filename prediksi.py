@@ -32,8 +32,8 @@ def prediksi():
     # Membuat DataFrame untuk input pengguna
     input_data = pd.DataFrame([[distance_km, courier_experience_yrs, preparation_time_min, weather, traffic_level, time_of_day, vehicle_type]],
                               columns=['Distance_km', 'Courier_Experience_yrs', 'Preparation_Time_min', 'Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type'])
-    
-    # Memuat model Linear Regression yang telah disimpan
+
+    # Memuat model, scaler dan encoder yang telah disimpan
     model_url = "https://dl.dropboxusercontent.com/scl/fi/hfj45bbigcyvsup9aeipf/Model-Linear-Regression.pkl?rlkey=vggmunmapqzgthbcj2puiohu6"
     model = load_pickle_from_dropbox(model_url)
 
@@ -152,4 +152,3 @@ def prediksi():
             actual_values = [10, 12, 14, 15, 13]  # Example, replace with actual values
             predicted_values = [prediction[0]] * len(actual_values)  # Example for visualization
             st.line_chart({"Actual": actual_values, "Predicted": predicted_values})
-
