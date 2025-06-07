@@ -6,7 +6,6 @@ from io import BytesIO
 
 # Fungsi untuk mengunduh dan memuat pickle dari Dropbox
 def load_pickle_from_dropbox(url):
-    # Mengunduh file pickle dari URL Dropbox
     response = requests.get(url)
     if response.status_code == 200:
         return pickle.load(BytesIO(response.content))  # Memuat pickle dari response content
@@ -24,16 +23,16 @@ def prediksi():
     distance_km = st.number_input("Jarak Pengantaran (km)", min_value=0.0, value=5.0, step=0.1)
     courier_experience_yrs = st.number_input("Pengalaman Kurir (tahun)", min_value=0, value=3, step=1)
     preparation_time_min = st.number_input("Waktu Persiapan (menit)", min_value=0, value=10, step=1)
-    weather = st.selectbox("Kondisi Cuaca", ['Clear', 'Rainy', 'Cloudy'])  # Kategorik
-    traffic_level = st.selectbox("Tingkat Lalu Lintas", ['Low', 'Moderate', 'High'])  # Kategorik
-    time_of_day = st.selectbox("Waktu Pengiriman", ['Morning', 'Afternoon', 'Evening'])  # Kategorik
-    vehicle_type = st.selectbox("Jenis Kendaraan", ['Motor', 'Car', 'Bicycle'])  # Kategorik
+    weather = st.selectbox("Kondisi Cuaca", ['Clear', 'Rainy', 'Foggy', 'Snowy', 'Windy'])  # Kategorik
+    traffic_level = st.selectbox("Tingkat Lalu Lintas", ['Low', 'Medium', 'High'])  # Kategorik
+    time_of_day = st.selectbox("Waktu Pengiriman", ['Morning', 'Afternoon', 'Evening', 'Night'])  # Kategorik
+    vehicle_type = st.selectbox("Jenis Kendaraan", ['Bike', 'Car', 'Scooter'])  # Kategorik
 
     # Membuat DataFrame untuk input pengguna
     input_data = pd.DataFrame([[distance_km, courier_experience_yrs, preparation_time_min, weather, traffic_level, time_of_day, vehicle_type]],
                               columns=['Distance_km', 'Courier_Experience_yrs', 'Preparation_Time_min', 'Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type'])
 
-    # Memuat model, scaler dan encoder yang telah disimpan
+    # Memuat model Linear Regression yang telah disimpan
     model_url = "https://dl.dropboxusercontent.com/scl/fi/hfj45bbigcyvsup9aeipf/Model-Linear-Regression.pkl?rlkey=vggmunmapqzgthbcj2puiohu6"
     model = load_pickle_from_dropbox(model_url)
 
@@ -152,3 +151,4 @@ def prediksi():
             actual_values = [10, 12, 14, 15, 13]  # Example, replace with actual values
             predicted_values = [prediction[0]] * len(actual_values)  # Example for visualization
             st.line_chart({"Actual": actual_values, "Predicted": predicted_values})
+
