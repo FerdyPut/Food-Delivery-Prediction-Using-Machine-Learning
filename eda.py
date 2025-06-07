@@ -19,28 +19,29 @@ def eda():
 
         # Pastikan data berhasil dimuat
         st.info("Dataset berhasil dibaca!")
-        st.write(df.head())  # Menampilkan 5 baris pertama untuk verifikasi
     except Exception as e:
         st.error(f"Error loading dataset: {e}")
         return
         
-    # EDA Visualizations (Boxplot, Histogram, Scatter Plot)
-    
-    # Descriptive Statistics
+    # Menampilkan DataFrame di dalam st.expander()
+    with st.expander("Dataset Preview (Klik untuk melihat)"):
+        st.write(df.head())  # Menampilkan 5 baris pertama untuk verifikasi
+
+    # Statistik Deskriptif
     with st.expander("Descriptive Statistics"):
         st.write(df.describe())
 
-    # Korelasi antar variabel menggunakan Heatmap hanya untuk variabel numerik
+    # Pilih kolom numerik untuk analisis
+    numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
+
+    # Menampilkan Korelasi antar variabel menggunakan Heatmap hanya untuk variabel numerik
     with st.expander("Correlation Heatmap (Numerical Variables Only)"):
-        numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
         corr = df[numeric_columns].corr()  # Menghitung korelasi hanya untuk kolom numerik
         fig, ax = plt.subplots(figsize=(4, 3))  # Menyesuaikan ukuran lebih kecil
         sns.heatmap(corr, annot=True, cmap="coolwarm", ax=ax)
         st.pyplot(fig)
 
-    # Pilih kolom numerik untuk analisis
-    numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
-
+    # EDA Visualizations (Boxplot, Histogram, Scatter Plot)
     with st.expander("Boxplot: Pilih variabel untuk melihat Boxplot"):
         selected_boxplot = st.selectbox("Pilih variabel untuk Boxplot", numeric_columns)
         fig, ax = plt.subplots(figsize=(4, 3))  # Ukuran kecil
