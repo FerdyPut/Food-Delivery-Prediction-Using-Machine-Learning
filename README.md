@@ -7,7 +7,8 @@
 ![image](https://github.com/user-attachments/assets/0ff09281-14ad-4328-9e6c-e3637974fc28)
 
 ## Case:
-Delays in food delivery are the most common complaint from customers of food delivery services. This issue can lead to decreased customer satisfaction, negative reviews directed at both the delivery personnel and the ordered outlet, and ultimately impact customer loyalty, where customers may no longer trust or choose to place orders from the same outlet or delivery service on the platform.
+Delivery delays are a common and critical issue in today's delivery service operations. Some of the main causes include long travel distances, bad weather, and technical issues such as inadequate vehicles or other factors. For example, heavy rain or limited road access can extend delivery times. Since this service heavily relies on punctuality, delays pose a challenge that must be addressed effectively to ensure smooth operations.
+
 
 ## Factors:
 Why do food delivery delays occur?
@@ -26,7 +27,8 @@ The timeliness of food delivery depends on several factors:
 - Courier experience: Experienced couriers are more likely to deliver quickly and efficiently. They know how to handle urgent or challenging situations and find the best way to ensure timely delivery.
 
 ## Solution:
-As a data scientist, I aim to predict optimal delivery times to minimize the risk of delays during the food delivery process. This initiative is intended to support couriers in performing their tasks more efficiently and assist the company in maintaining its reputation. Customer satisfaction and loyalty are crucial factors that can enhance a company’s profitability. Therefore, applying machine learning to predict food delivery times is a relevant and strategic step. Considering the intense competition in the food delivery industry — with major players like Gojek and others — this initiative aims to help the company attract more customers, improve service quality, and strengthen its market position.
+As a data scientist, I aim to develop a predictive model that can accurately estimate delivery times in order to minimize delays. With more precise predictions, the delivery process can run more smoothly and systematically, helping couriers manage travel time more efficiently. This is expected to enhance operational effectiveness, reduce the risk of delays, and provide strategic solutions to address challenges in the delivery service industry, particularly in competing with similar services such as Gojek.
+
 
 ## Datasets:
 - Order_ID: A unique identifier for each order. This is a categorical variable that does not have a direct relationship with the target variable (delivery time), but it can be used for grouping or tracking purposes.
